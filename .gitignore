@@ -14,10 +14,6 @@ gradle/
 
 build.gradle
 
-.classpath
-
-.project
-
 gradlew
 
 gradlew.bat
