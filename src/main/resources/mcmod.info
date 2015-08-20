@@ -1,0 +1,16 @@
+[
+{
+  "modid": "robotsculptures",
+  "name": "Robot Sculptures",
+  "description": "Adds in a number of very pretty sculptures of robots.",
+  "version": "1.0.0",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["LordMastodon"],
+  "credits": "LordMastodon, everything.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

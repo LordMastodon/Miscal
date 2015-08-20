@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "robotsculptures:ken_sculpture" },
+        "facing=south": { "model": "robotsculptures:ken_sculpture", "y": 180 },
+        "facing=west":  { "model": "robotsculptures:ken_sculpture", "y": 270 },
+        "facing=east":  { "model": "robotsculptures:ken_sculpture", "y": 90 }
+    }
+}
