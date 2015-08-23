@@ -1,29 +1,27 @@
 package lordmastodon.robotsculptures.handler;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+import lordmastodon.robotsculptures.block.RSBlocks;
+import lordmastodon.robotsculptures.client.gui.RSGuiConfig;
 import lordmastodon.robotsculptures.constants.ModConstants;
-import net.minecraftforge.common.config.Configuration;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ConfigurationHandler {
-	
-	public static Configuration config;
 
 	public static boolean kenSculptureExplosions = true;
 	public static boolean kenSculptureFuse = true;
 	public static int kenSculptureFuseLength = 60;
-	public static int kenSculptureExplosionStrength = 3;
+	public static float kenSculptureExplosionStrength = 3;
 	
-	public static final String KEN_SCULPTURE_CATEGORY = "ken_sculpture";
+	public static List<Item> kenSculptureRecipeItems = new ArrayList<Item>(9);
 	
-	public static void init (File configFile) {
-		if(config == null) {
-			config = new Configuration(configFile);
-			
-			loadConfiguration();
-		}
+	public static void init () {
+		loadConfiguration();
 	}
 	
 	@SubscribeEvent
@@ -33,14 +31,27 @@ public class ConfigurationHandler {
 		}
 	}
 	
-	private static void loadConfiguration() {
-		kenSculptureExplosions = config.get(KEN_SCULPTURE_CATEGORY, "kenSculptureExplosions", true, "Should the Sculpture of Ken the Mighty explode?").getBoolean(true);
-		kenSculptureFuse = config.get(KEN_SCULPTURE_CATEGORY, "kenSculptureFuse", true, "Should the Sculpture of Ken the Mighty have a fuse?").getBoolean(true);
-		kenSculptureFuseLength = config.get(KEN_SCULPTURE_CATEGORY, "kenSculptureFuseLength", 60, "How long should the fuse timer be before the Sculpture of Ken the Mighty explodes (in game ticks, one second = 20 ticks)?").getInt(60);
-		kenSculptureExplosionStrength = config.get(KEN_SCULPTURE_CATEGORY, "kenSculptureExplosionStrength", 3, "How strong should the explosion be (creeper = 3)?").getInt(3);
+	private static void loadConfiguration() { 
+		//KEN_SCULPTURE_CATEGORY
+		kenSculptureExplosions = (Boolean) RSGuiConfig.kenSculptureExplosions.get();
+		kenSculptureFuse = (Boolean) RSGuiConfig.kenSculptureFuse.get();
+		kenSculptureFuseLength = (Integer) RSGuiConfig.kenSculptureFuseLength.get();
+		kenSculptureExplosionStrength = (Float) RSGuiConfig.kenSculptureExplosionStrength.get();
 		
-		if (config.hasChanged()) {
-			config.save();
+		//KEN_SCULPTURE_RECIPE_CATEGORY
+		for(int i = 0; i < kenSculptureRecipeItems.size(); i++) {
+			Object[] list = RSGuiConfig.kenSculptureRecipeIngredients.getList();
+			
+			String listString = (String) list[i].toString();
+			String modid;
+			
+			if (listString.indexOf(":") != -1) {
+				modid = listString.substring(0, listString.indexOf(":"));
+			} else {
+				throw new IllegalArgumentException("You haven't provided a modid for your item.");
+			}
+			
+			kenSculptureRecipeItems.set(i, GameRegistry.findItem(modid, list[i].toString()));
 		}
 	}
 	

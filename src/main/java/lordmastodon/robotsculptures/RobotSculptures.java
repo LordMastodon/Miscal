@@ -2,6 +2,7 @@ package lordmastodon.robotsculptures;
 
 import lordmastodon.robotsculptures.block.RSBlocks;
 import lordmastodon.robotsculptures.constants.ModConstants;
+import lordmastodon.robotsculptures.crafting.RSCraftingRecipes;
 import lordmastodon.robotsculptures.creativetab.SculpturesTab;
 import lordmastodon.robotsculptures.handler.ConfigurationHandler;
 import lordmastodon.robotsculptures.proxy.CommonProxy;
@@ -32,7 +33,7 @@ public class RobotSculptures {
 		RSBlocks.init();
 		RSBlocks.register();
 		
-		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+		ConfigurationHandler.init();
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 	}
 	
@@ -45,7 +46,7 @@ public class RobotSculptures {
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		RSCraftingRecipes.register();
 	}
 
 }
