@@ -1,0 +1,23 @@
+tile.ken_sculpture.name=Sculpture of Ken the Mighty
+
+itemGroup.tabMiscal=Miscal
+
+configvalue.kensculpture.explosionstrength.name=Explosion Strength
+configvalue.kensculpture.explosionstrength.name.tooltip=The strength of the Sculpture of Ken the Mighty's explosion.
+configvalue.kensculpture.explosions.name=Explosions
+configvalue.kensculpture.explosions.name.tooltip=Whether or not the Sculpture of Ken the Mighty should have explosions.
+configvalue.kensculpture.fuse.name=Fuse
+configvalue.kensculpture.fuse.name.tooltip=Whether or not the Sculpture of Ken the Mighty should have a fuse.
+configvalue.kensculpture.fuselength.name=Fuse Length
+configvalue.kensculpture.fuselength.name.tooltip=The length of the Sculpture of Ken the Mighty's fuse.
+
+configlist.recipes.kensculpture.name=Ken Sculpture Recipe Ingredients
+configlist.recipes.kensculpture.name.tooltip=Change the recipe for the Sculpture of Ken the Mighty
+
+configcategory.kensculpture.name=Ken Sculpture
+configcategory.kensculpture.name.tooltip=Ken Sculpture Configuration
+configcategory.recipes.kensculpture.name=Ken Sculpture Recipe
+configcategory.recipes.kensculpture.name.tooltip=Ken Sculpture Recipe Configuration
+
+configcategory.recipes.name=Recipes
+configcategory.recipes.name.tooltip=Recipe Configuration

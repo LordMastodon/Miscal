@@ -1,8 +1,8 @@
 [
 {
-  "modid": "robotsculptures",
-  "name": "Robot Sculptures",
-  "description": "Adds in a number of very pretty sculptures of robots.",
+  "modid": "miscal",
+  "name": "Miscal",
+  "description": "Adds in a number of miscellaneous items and blocks, and I mean miscellaneous.",
   "version": "1.0.0",
   "mcversion": "${mcversion}",
   "url": "",

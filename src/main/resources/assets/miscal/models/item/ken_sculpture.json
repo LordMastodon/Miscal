@@ -1,0 +1,15 @@
+{
+    "parent": "robotsculptures:block/ken_sculpture",
+    "display": {
+        "thirdperson": {
+            "rotation": [ -90, 0, 0 ],
+            "translation": [ 0, 1, -3 ],
+            "scale": [ 0.55, 0.55, 0.55 ]
+        },
+        "firstperson": {
+            "rotation": [ 0, 90, 0 ],
+            "translation": [ 0, 4, 2 ],
+            "scale": [ 1.7, 1.7, 1.7 ]
+        }
+    }
+}
