@@ -1,8 +1,8 @@
 {
     "textures": {
-        "particle": "robotsculptures:model/ken_sculpture_base",
-        "0": "robotsculptures:model/ken_sculpture_base",
-        "1": "robotsculptures:model/ken_sculpture"
+        "particle": "miscal:model/ken_sculpture_base",
+        "0": "miscal:model/ken_sculpture_base",
+        "1": "miscal:model/ken_sculpture"
     },
     "elements": [
         {

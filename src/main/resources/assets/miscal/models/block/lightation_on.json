@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "miscal:blocks/lightation_on"
+    }
+}

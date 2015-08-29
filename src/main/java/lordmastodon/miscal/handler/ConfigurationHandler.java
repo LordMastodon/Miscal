@@ -16,13 +16,6 @@ public class ConfigurationHandler {
 		loadConfiguration();
 	}
 	
-	@SubscribeEvent
-	public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
-		if (event.modID.equalsIgnoreCase(ModConstants.MOD_ID)) {
-			loadConfiguration();
-		}
-	}
-	
 	public static void loadConfiguration() { 
 		System.out.println("Loaded Configuration");
 		

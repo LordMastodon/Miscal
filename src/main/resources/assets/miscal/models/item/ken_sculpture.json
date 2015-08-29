@@ -1,5 +1,5 @@
 {
-    "parent": "robotsculptures:block/ken_sculpture",
+    "parent": "miscal:block/ken_sculpture",
     "display": {
         "thirdperson": {
             "rotation": [ -90, 0, 0 ],

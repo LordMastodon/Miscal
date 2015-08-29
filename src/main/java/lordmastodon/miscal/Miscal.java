@@ -5,9 +5,11 @@ import lordmastodon.miscal.constants.ModConstants;
 import lordmastodon.miscal.crafting.MiscalCraftingRecipes;
 import lordmastodon.miscal.creativetab.MiscalTab;
 import lordmastodon.miscal.handler.ConfigurationHandler;
+import lordmastodon.miscal.handler.FMLCommonHandlerEventHandler;
+import lordmastodon.miscal.handler.MinecraftForgeEventBusEventHandler;
 import lordmastodon.miscal.proxy.CommonProxy;
 import lordmastodon.miscal.tileentity.MiscalTileEntities;
-import net.minecraft.entity.passive.EntityPig;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -34,7 +36,8 @@ public class Miscal {
 		MiscalBlocks.register();
 		
 		ConfigurationHandler.init();
-		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+		FMLCommonHandler.instance().bus().register(new FMLCommonHandlerEventHandler());
+		MinecraftForge.EVENT_BUS.register(new MinecraftForgeEventBusEventHandler());
 	}
 	
 	@EventHandler
