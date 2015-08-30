@@ -11,7 +11,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
     }
-    task version {
+    version {
         File f = new File("$buildDir/libs/version.txt")
         if (!f.getParentFile().exists()) f.getParentFile().mkdirs()
         if (!f.exists()) f.createNewFile()
