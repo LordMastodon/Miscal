@@ -1,7 +1,6 @@
 .settings/
 build/
 eclipse/
-gradle/
 run/
 
 *.txt
