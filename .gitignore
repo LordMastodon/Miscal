@@ -1,15 +1,10 @@
-.gradle/
 .settings/
 build/
 eclipse/
 gradle/
 run/
 
-build.gradle
-
 *.txt
 *.launch
 
-gradlew
-gradlew.bat
 /bin/

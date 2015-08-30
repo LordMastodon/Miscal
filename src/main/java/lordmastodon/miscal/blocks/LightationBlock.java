@@ -28,7 +28,7 @@ public class LightationBlock extends Block {
 	public LightationBlock() {
 		super(Material.iron);
 		
-		this.setDefaultState(this.blockState.getBaseState().withProperty(LIT_UP, false));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(LIT_UP, Boolean.valueOf(false)));
 	}
 	
 	@Override
@@ -42,11 +42,11 @@ public class LightationBlock extends Block {
 			boolean litUp = (Boolean) state.getValue(LIT_UP);
 			
 			if(!litUp) {
-				world.setBlockState(pos, state.withProperty(LIT_UP, true));
+				world.setBlockState(pos, state.withProperty(LIT_UP, Boolean.valueOf(true)));
 				
 				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.6F, 1.6F, 1.6F);
 			} else {
-				world.setBlockState(pos, state.withProperty(LIT_UP, false));
+				world.setBlockState(pos, state.withProperty(LIT_UP, Boolean.valueOf(false)));
 				
 				this.setBlockBounds(0.315F, 0.005F, 0.315F, 0.685F, 0.125F, 0.685F);
 			}
@@ -93,7 +93,7 @@ public class LightationBlock extends Block {
 			break;
 		}
 		
-		return this.getDefaultState().withProperty(LIT_UP, metaBool);
+		return this.getDefaultState().withProperty(LIT_UP, Boolean.valueOf(metaBool));
 	}
 	
 	public int getMetaFromState(IBlockState state) {
@@ -102,7 +102,7 @@ public class LightationBlock extends Block {
 	
 	@SideOnly(Side.CLIENT)
 	public IBlockState getStateForEntityRender(IBlockState state) {
-		return this.getDefaultState().withProperty(LIT_UP, false);
+		return this.getDefaultState().withProperty(LIT_UP, Boolean.valueOf(false));
 	}
 	
 	protected BlockState createBlockState() {
