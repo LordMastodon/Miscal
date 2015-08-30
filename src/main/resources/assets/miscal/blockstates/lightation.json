@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "lit=false": { "model": "miscal:lightation" },
+        "lit=true": { "model": "miscal:lightation_on" }
+    }
+}

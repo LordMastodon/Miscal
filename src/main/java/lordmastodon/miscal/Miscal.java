@@ -7,6 +7,7 @@ import lordmastodon.miscal.creativetab.MiscalTab;
 import lordmastodon.miscal.handler.ConfigurationHandler;
 import lordmastodon.miscal.handler.FMLCommonHandlerEventHandler;
 import lordmastodon.miscal.handler.MinecraftForgeEventBusEventHandler;
+import lordmastodon.miscal.item.MiscalItems;
 import lordmastodon.miscal.proxy.CommonProxy;
 import lordmastodon.miscal.tileentity.MiscalTileEntities;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +35,8 @@ public class Miscal {
 	public void preInit(FMLPreInitializationEvent event) {
 		MiscalBlocks.init();
 		MiscalBlocks.register();
+		MiscalItems.init();
+		MiscalItems.register();
 		
 		ConfigurationHandler.init();
 		FMLCommonHandler.instance().bus().register(new FMLCommonHandlerEventHandler());

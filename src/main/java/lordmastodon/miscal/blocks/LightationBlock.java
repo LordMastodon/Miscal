@@ -11,19 +11,19 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.util.MathHelper;
 
 public class LightationBlock extends Block {
 	
 	public static final PropertyBool LIT_UP = PropertyBool.create("lit");
-	private static boolean inLitUpMode = false;
 	
 	public LightationBlock() {
 		super(Material.iron);
@@ -31,15 +31,25 @@ public class LightationBlock extends Block {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(LIT_UP, false));
 	}
 	
+	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(MiscalBlocks.lightation);
 	}
 	
+	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			inLitUpMode = (Boolean) state.getValue(LIT_UP);
+			boolean litUp = (Boolean) state.getValue(LIT_UP);
 			
-			world.setBlockState(pos, state.withProperty(LIT_UP, inLitUpMode));
+			if(!litUp) {
+				world.setBlockState(pos, state.withProperty(LIT_UP, true));
+				
+				this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.6F, 1.6F, 1.6F);
+			} else {
+				world.setBlockState(pos, state.withProperty(LIT_UP, false));
+				
+				this.setBlockBounds(0.315F, 0.005F, 0.315F, 0.685F, 0.125F, 0.685F);
+			}
 		}
 		
 		return true;
@@ -47,23 +57,29 @@ public class LightationBlock extends Block {
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, BlockPos pos) {
-		boolean isLitUp = (Boolean) world.getBlockState(pos).getValue(LIT_UP);
+		boolean litUp = (Boolean) world.getBlockState(pos).getValue(LIT_UP);
 		
-		if (!isLitUp) {
-			this.setBlockBounds(5F, (float) this.minY, 5F, 11F, 2F, 11F);
+		if(litUp) {
+			this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		} else {
+			this.setBlockBounds(0.315F, 0.005F, 0.315F, 0.685F, 0.125F, 0.685F);
 		}
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
-    public AxisAlignedBB getSelectedBoundingBox(World worldIn, BlockPos pos)
-    {
-        if(inLitUpMode) {
-        	return new AxisAlignedBB((double)pos.getX() + minX, (double)pos.getY() + this.minY, (double)pos.getZ() + this.minZ, (double)pos.getX() + this.maxX, (double)pos.getY() + this.maxY, (double)pos.getZ() + this.maxZ);
-        } else {
-        	return new AxisAlignedBB((double)pos.getX() + 5D, (double)pos.getY() + this.minY, (double)pos.getZ() + 5D, (double)pos.getX() + 11D, (double)pos.getY() + 2D, (double)pos.getZ() + 11D);
-        }
-    }
+	public int getLightValue(IBlockAccess world, BlockPos pos) {
+		int lightValue = 0;
+		
+		boolean litUp = (Boolean) world.getBlockState(pos).getValue(LIT_UP);
+
+	   	if (litUp) {
+	   		lightValue = 15;
+		} else {
+			lightValue = 0;
+		}
+	
+		return lightValue;
+	}
 	
 	public IBlockState getStateFromMeta(int meta) {
 		boolean metaBool = false;

@@ -1,5 +1,5 @@
 {
-    "parent": "miscal:block/lightation_off",
+    "parent": "miscal:block/lightation",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

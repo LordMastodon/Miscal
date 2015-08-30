@@ -1,4 +1,4 @@
-package lordmastodon.miscal.tileentity;
+package lordmastodon.miscal.tileentities;
 
 import lordmastodon.miscal.handler.ConfigurationHandler;
 import net.minecraft.server.gui.IUpdatePlayerListBox;

@@ -1,6 +1,7 @@
 package lordmastodon.miscal.tileentity;
 
 import lordmastodon.miscal.constants.TileEntityConstants;
+import lordmastodon.miscal.tileentities.KenSculptureTileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class MiscalTileEntities {
