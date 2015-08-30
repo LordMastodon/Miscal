@@ -11,14 +11,6 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
     }
-    task version() {
-        File f = new File("$buildDir/libs/version.txt")
-        if (!f.getParentFile().exists()) f.getParentFile().mkdirs()
-        if (!f.exists()) f.createNewFile()
-        FileOutputStream fos = new FileOutputStream(f)
-        fos.write(project.version.getBytes())
-        fos.close()
-    }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 */
@@ -87,4 +79,13 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+task version {
+    File f = new File("$buildDir/libs/version.txt")
+    if (!f.getParentFile().exists()) f.getParentFile().mkdirs()
+    if (!f.exists()) f.createNewFile()
+    FileOutputStream fos = new FileOutputStream(f)
+    fos.write(project.version.getBytes())
+    fos.close()
 }
