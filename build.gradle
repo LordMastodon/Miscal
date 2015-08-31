@@ -25,9 +25,9 @@ group= "lordmastodon.miscal" // http://maven.apache.org/guides/mini/guide-naming
 archivesBaseName = "miscal"
 
 task version {
-    File fi = new File("$buildDir/libs/version.txt")
-    if (!fi.getParentFile().exists()) fi.getParentFile().mkdirs()
-    if (!fi.exists()) fi.createNewFile()
+    File f = new File("$buildDir/libs/version.txt")
+    if (!f.getParentFile().exists()) f.getParentFile().mkdirs()
+    if (!f.exists()) f.createNewFile()
     FileOutputStream fos = new FileOutputStream(f)
     fos.write(project.version.getBytes())
     fos.close()
