@@ -1,6 +1,10 @@
 package lordmastodon.miscal.tileentities;
 
+import lordmastodon.miscal.constants.NBTConstants;
 import lordmastodon.miscal.handler.ConfigurationHandler;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 
@@ -44,5 +48,21 @@ public class KenSculptureTileEntity extends TileEntity implements IUpdatePlayerL
 		
 		return false;
 	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound c) {
+		super.writeToNBT(c);
+		
+		c.setBoolean(NBTConstants.ignitedKey, this.ignited);
+		c.setShort(NBTConstants.fuseKey, (short) this.fuse);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound c) {
+        super.readFromNBT(c);
+
+        this.ignited = c.getBoolean(NBTConstants.ignitedKey);
+        this.fuse = (int) c.getShort(NBTConstants.fuseKey);
+    }
 
 }
