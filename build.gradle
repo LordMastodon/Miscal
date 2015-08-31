@@ -11,14 +11,6 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
     }
-    task version() {
-        File f = new File("$buildDir/libs/version.txt")
-        if (!f.getParentFile().exists()) f.getParentFile().mkdirs()
-        if (!f.exists()) f.createNewFile()
-        FileOutputStream fos = new FileOutputStream(f)
-        fos.write(project.version.getBytes())
-        fos.close()
-    }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 */
@@ -31,6 +23,15 @@ plugins {
 version = "1.0.0"
 group= "lordmastodon.miscal" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "miscal"
+
+task version {
+    File fi = new File("$buildDir/libs/version.txt")
+    if (!fi.getParentFile().exists()) fi.getParentFile().mkdirs()
+    if (!fi.exists()) fi.createNewFile()
+    FileOutputStream fos = new FileOutputStream(f)
+    fos.write(project.version.getBytes())
+    fos.close()
+}
 
 minecraft {
     version = "1.8-11.14.3.1506"
