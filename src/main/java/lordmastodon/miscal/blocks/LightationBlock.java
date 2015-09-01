@@ -66,6 +66,7 @@ public class LightationBlock extends Block {
 		}
 	}
 	
+	//Switches light value when blockstate changes
 	@Override
 	public int getLightValue(IBlockAccess world, BlockPos pos) {
 		int lightValue = 0;
