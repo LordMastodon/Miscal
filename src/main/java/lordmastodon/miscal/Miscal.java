@@ -6,7 +6,7 @@ import lordmastodon.miscal.crafting.MiscalCraftingRecipes;
 import lordmastodon.miscal.creativetab.MiscalTab;
 import lordmastodon.miscal.handler.ConfigurationHandler;
 import lordmastodon.miscal.handler.GuiHandler;
-import lordmastodon.miscal.handler.MinecraftForgeEventBusEventHandler;
+import lordmastodon.miscal.handler.MFEBEHandler;
 import lordmastodon.miscal.proxy.CommonProxy;
 import lordmastodon.miscal.tileentity.MiscalTileEntities;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,7 +46,7 @@ public class Miscal {
 		
 		//Event Registration
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
-		MinecraftForge.EVENT_BUS.register(new MinecraftForgeEventBusEventHandler());
+		MinecraftForge.EVENT_BUS.register(new MFEBEHandler());
 	}
 	
 	@EventHandler

@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,21 +15,20 @@ import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.util.MathHelper;
 
 public class LightationBlock extends Block {
 	
 	public static final PropertyBool LIT_UP = PropertyBool.create("lit");
+	public static final PropertyInteger ON_WALL = PropertyInteger.create("on_wall", 0, 6);
 	
 	public LightationBlock() {
 		super(Material.iron);
 		
-		this.setDefaultState(this.blockState.getBaseState().withProperty(LIT_UP, Boolean.valueOf(false)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(LIT_UP, Boolean.valueOf(false)).withProperty(LIT_UP, Integer.valueOf(5)));
 	}
 	
 	@Override
