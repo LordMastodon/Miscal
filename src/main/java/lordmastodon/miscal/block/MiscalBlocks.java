@@ -1,8 +1,6 @@
 package lordmastodon.miscal.block;
 
 import lordmastodon.miscal.Miscal;
-import lordmastodon.miscal.blocks.KenSculptureBlock;
-import lordmastodon.miscal.blocks.LightationBlock;
 import lordmastodon.miscal.constants.BlockConstants;
 import lordmastodon.miscal.constants.ModConstants;
 import net.minecraft.block.Block;

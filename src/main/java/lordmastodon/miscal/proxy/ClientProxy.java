@@ -8,7 +8,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenders() {
 		MiscalBlocks.registerRenders();
-		//MiscalItems.registerRenders();
+		MiscalItems.registerRenders();
 	}
 	
 }

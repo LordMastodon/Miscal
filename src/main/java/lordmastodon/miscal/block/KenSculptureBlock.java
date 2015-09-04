@@ -1,8 +1,8 @@
-package lordmastodon.miscal.blocks;
+package lordmastodon.miscal.block;
 
 import lordmastodon.miscal.Miscal;
 import lordmastodon.miscal.handler.ConfigurationHandler;
-import lordmastodon.miscal.tileentities.KenSculptureTileEntity;
+import lordmastodon.miscal.tileentity.KenSculptureTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

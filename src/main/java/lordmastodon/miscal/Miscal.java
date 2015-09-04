@@ -1,5 +1,7 @@
 package lordmastodon.miscal;
 
+import org.apache.logging.log4j.Logger;
+
 import lordmastodon.miscal.block.MiscalBlocks;
 import lordmastodon.miscal.constants.ModConstants;
 import lordmastodon.miscal.crafting.MiscalCraftingRecipes;
@@ -7,6 +9,7 @@ import lordmastodon.miscal.creativetab.MiscalTab;
 import lordmastodon.miscal.handler.ConfigurationHandler;
 import lordmastodon.miscal.handler.GuiHandler;
 import lordmastodon.miscal.handler.MFEBEHandler;
+import lordmastodon.miscal.item.MiscalItems;
 import lordmastodon.miscal.proxy.CommonProxy;
 import lordmastodon.miscal.tileentity.MiscalTileEntities;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,20 +36,24 @@ public class Miscal {
 
 	public static final MiscalTab modTab = new MiscalTab("tabMiscal");
 	
+	public static Logger modLogger;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		//Content Registration
 		MiscalBlocks.init();
 		MiscalBlocks.register();
-		//MiscalItems.init();
-		//MiscalItems.register();
+		MiscalItems.init();
+		MiscalItems.register();
 		
 		//Configuration Registration
-		ConfigurationHandler.init(event.getSuggestedConfigurationFile());;
+		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		
 		//Event Registration
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		MinecraftForge.EVENT_BUS.register(new MFEBEHandler());
+		
+		modLogger = event.getModLog();
 	}
 	
 	@EventHandler

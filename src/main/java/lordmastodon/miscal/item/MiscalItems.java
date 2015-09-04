@@ -3,7 +3,6 @@ package lordmastodon.miscal.item;
 import lordmastodon.miscal.Miscal;
 import lordmastodon.miscal.constants.ItemConstants;
 import lordmastodon.miscal.constants.ModConstants;
-import lordmastodon.miscal.items.ConnectedTextureItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;

@@ -1,10 +1,8 @@
-package lordmastodon.miscal.tileentities;
+package lordmastodon.miscal.tileentity;
 
 import lordmastodon.miscal.constants.NBTConstants;
 import lordmastodon.miscal.handler.ConfigurationHandler;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 
@@ -36,8 +34,6 @@ public class KenSculptureTileEntity extends TileEntity implements IUpdatePlayerL
 			if (ConfigurationHandler.kenSculptureFuse) {
 				if (fuse > 0) {
 					fuse--;
-					
-					System.out.println(fuse);
 				} else {
 					return true;
 				}

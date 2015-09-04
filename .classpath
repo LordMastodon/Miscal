@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry sourcepath="C:/Users/George/.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.3.1506/snapshot/20141130/forgeSrc-1.8-11.14.3.1506-sources.jar" kind="lib" path="C:/Users/George/.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.3.1506/snapshot/20141130/forgeSrc-1.8-11.14.3.1506.jar"/>
+	<classpathentry sourcepath="C:/Users/George/.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.3.1512/snapshot/20141130/forgeSrc-1.8-11.14.3.1512-sources.jar" kind="lib" path="C:/Users/George/.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.3.1512/snapshot/20141130/forgeSrc-1.8-11.14.3.1512.jar"/>
 	<classpathentry kind="lib" path="C:/Users/George/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.1/4c517eca808522457dd95ee8fc1fbcdbb602efbe/lwjgl-platform-2.9.1-natives-windows.jar"/>
 	<classpathentry sourcepath="C:/Users/George/.gradle/caches/modules-2/files-2.1/org.scala-lang.plugins/scala-continuations-library_2.11/1.0.2/495afc106eeaa1b3367f6be0bc3768c398e4d360/scala-continuations-library_2.11-1.0.2-sources.jar" kind="lib" path="C:/Users/George/.gradle/caches/modules-2/files-2.1/org.scala-lang.plugins/scala-continuations-library_2.11/1.0.2/e517c53a7e9acd6b1668c5a35eccbaa3bab9aac/scala-continuations-library_2.11-1.0.2.jar"/>
 	<classpathentry sourcepath="C:/Users/George/.gradle/caches/modules-2/files-2.1/net.minecraft/launchwrapper/1.12/fd80cad9a1b967ce2ff20529dc54e520d5338d7/launchwrapper-1.12-sources.jar" kind="lib" path="C:/Users/George/.gradle/caches/modules-2/files-2.1/net.minecraft/launchwrapper/1.12/111e7bea9c968cdb3d06ef4632bf7ff0824d0f36/launchwrapper-1.12.jar"/>
@@ -62,5 +62,5 @@
 	<classpathentry kind="lib" path="C:/Users/George/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/7ff832a6eb9ab6a767f1ade2b548092d0fa64795/jinput-platform-2.0.5-natives-linux.jar"/>
 	<classpathentry kind="lib" path="C:/Users/George/.gradle/caches/minecraft/deobfedDeps/compileDummy.jar"/>
 	<classpathentry kind="lib" path="C:/Users/George/.gradle/caches/minecraft/deobfedDeps/providedDummy.jar"/>
-	<classpathentry kind="lib" path="C:/Users/George/.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.3.1506/start"/>
+	<classpathentry kind="lib" path="C:/Users/George/.gradle/caches/minecraft/net/minecraftforge/forge/1.8-11.14.3.1512/start"/>
 </classpath>
