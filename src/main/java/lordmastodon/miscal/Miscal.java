@@ -1,5 +1,6 @@
 package lordmastodon.miscal;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import lordmastodon.miscal.block.MiscalBlocks;
@@ -53,7 +54,7 @@ public class Miscal {
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		MinecraftForge.EVENT_BUS.register(new MFEBEHandler());
 		
-		modLogger = event.getModLog();
+		modLogger = LogManager.getLogger(ModConstants.MOD_NAME);
 	}
 	
 	@EventHandler

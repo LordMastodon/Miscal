@@ -10,11 +10,13 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
@@ -62,21 +64,26 @@ public class LightationBlock extends Block {
 	}
 	
 	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
-        
-		Miscal.modLogger.debug("Placed Block");
-		
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {		
 		return world.isSideSolid(pos.offset(facing.getOpposite()), facing, true) ? this.getDefaultState().withProperty(FACING, facing).withProperty(LIT_UP, Boolean.valueOf(false)) : this.getDefaultState().withProperty(FACING, EnumFacing.DOWN).withProperty(LIT_UP, Boolean.valueOf(false));
     }
 	
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-		
-		setBlockBoundsBasedOnFacing(worldIn, pos);
-		
-		Miscal.modLogger.debug("Placed Block");
+	public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {
+        return null;
+    }
+//	
+//	@Override
+//	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+//		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+//		
+//		setBlockBoundsBasedOnFacing(worldIn, pos);
+//		
+//		Miscal.modLogger.debug("Placed Block");
+//	}
+//	
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		//setBlockBoundsBasedOnFacing(state);
 	}
 	
 	@Override
@@ -84,22 +91,20 @@ public class LightationBlock extends Block {
 		if (!world.isRemote) {
 			boolean litUp = (Boolean) state.getValue(LIT_UP);
 			
-			if(!litUp) {
-				world.setBlockState(pos, state.withProperty(LIT_UP, Boolean.valueOf(true)));
-				
-				setBlockBoundsBasedOnFacing(world, pos);
+			if (litUp) {
+				world.setBlockState(pos, state.withProperty(LIT_UP, false));
 			} else {
-				world.setBlockState(pos, state.withProperty(LIT_UP, Boolean.valueOf(false)));
-				
-				setBlockBoundsBasedOnFacing(world, pos);
+				world.setBlockState(pos, state.withProperty(LIT_UP, true));
 			}
+			//setBlockBoundsBasedOnFacing(state);
 		}
-		
-		world.notifyNeighborsOfStateChange(pos, this);
-        world.notifyNeighborsOfStateChange(pos.offset(((EnumFacing) state.getValue(FACING)).getOpposite()), this);
 		
 		return true;
 	}
+	
+	public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos) {
+        setBlockBoundsBasedOnFacing(worldIn.getBlockState(pos));
+    }
 	
 	//Switches light value when blockstate changes
 	@Override
@@ -153,49 +158,28 @@ public class LightationBlock extends Block {
 	}
 	
 	
-	public void setBlockBoundsBasedOnFacing(IBlockAccess world, BlockPos pos) {
-		boolean litUp = (Boolean) world.getBlockState(pos).getValue(LIT_UP);
-		EnumFacing facing = (EnumFacing) world.getBlockState(pos).getValue(FACING);
+	public void setBlockBoundsBasedOnFacing(IBlockState state) {
+		boolean litUp = Boolean.valueOf((Boolean) state.getValue(LIT_UP));
+		EnumFacing facing = (EnumFacing) state.getValue(FACING);
 		
-		if (facing == EnumFacing.NORTH) {
-			if (litUp) {
+		if (litUp) {
+			switch (facing) {
+			case NORTH:
 				this.setBlockBounds(0F * pixel, 5F * pixel, 5F * pixel, 2F * pixel, 11F * pixel, 11F * pixel);
-			} else {
-				this.setBlockBounds(16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
-			}
-		} else if (facing == EnumFacing.WEST) {
-			if (litUp) {
+			case WEST:
 				this.setBlockBounds(5F * pixel, 5F * pixel, 0F * pixel, 11F * pixel, 2F * pixel, 11F * pixel);
-			} else {
-				this.setBlockBounds(16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
-			}
-		} else if (facing == EnumFacing.SOUTH) {
-			if (litUp) {
+			case SOUTH:
 				this.setBlockBounds(16F * pixel, 11F * pixel, 11F * pixel, 13F * pixel, 5F * pixel, 5F * pixel);
-			} else {
-				this.setBlockBounds(16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
-			}
-		} else if (facing == EnumFacing.EAST) {
-			if (litUp) {
+			case EAST:
 				this.setBlockBounds(11F * pixel, 11F * pixel, 16F * pixel, 5F * pixel, 13F * pixel, 5F * pixel);
-			} else {
-				this.setBlockBounds(16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
-			}
-		} else if (facing == EnumFacing.UP) {
-			if (litUp) {
+			case UP:
 				this.setBlockBounds(5F * pixel, 0F * pixel, 5F * pixel, 11F * pixel, 2F * pixel, 11F * pixel);
-			} else {
-				this.setBlockBounds(16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
-			}
-		} else if (facing == EnumFacing.DOWN) {
-			if (litUp) {
+			case DOWN:
 				this.setBlockBounds(11F * pixel, 16F * pixel, 11F * pixel, 5F * pixel, 13F * pixel, 5F * pixel);
-			} else {
-				this.setBlockBounds(16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
 			}
+		} else {
+			this.setBlockBounds(0F * pixel, 0F * pixel, 0F * pixel, 16F * pixel, 16F * pixel, 16F * pixel);
 		}
-		
-		Miscal.modLogger.debug("Set Block Bounds to " + toString(facing));
 	}
 	
 	private String toString(EnumFacing facing) {
