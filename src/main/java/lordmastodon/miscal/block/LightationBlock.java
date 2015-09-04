@@ -63,13 +63,17 @@ public class LightationBlock extends Block {
 	
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        Miscal.modLogger.debug("Placed Block");
+        super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+        
+		Miscal.modLogger.debug("Placed Block");
 		
 		return world.isSideSolid(pos.offset(facing.getOpposite()), facing, true) ? this.getDefaultState().withProperty(FACING, facing).withProperty(LIT_UP, Boolean.valueOf(false)) : this.getDefaultState().withProperty(FACING, EnumFacing.DOWN).withProperty(LIT_UP, Boolean.valueOf(false));
     }
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		
 		setBlockBoundsBasedOnFacing(worldIn, pos);
 		
 		Miscal.modLogger.debug("Placed Block");
