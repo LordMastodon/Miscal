@@ -72,19 +72,6 @@ public class LightationBlock extends Block {
 	public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state) {
         return null;
     }
-//	
-//	@Override
-//	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-//		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-//		
-//		setBlockBoundsBasedOnFacing(worldIn, pos);
-//		
-//		Miscal.modLogger.debug("Placed Block");
-//	}
-//	
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		//setBlockBoundsBasedOnFacing(state);
-	}
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
@@ -92,11 +79,12 @@ public class LightationBlock extends Block {
 			boolean litUp = (Boolean) state.getValue(LIT_UP);
 			
 			if (litUp) {
-				world.setBlockState(pos, state.withProperty(LIT_UP, false));
+				world.setBlockState(pos, state.withProperty(LIT_UP, false).withProperty(FACING, state.getValue(FACING)));
+				player.addChatMessage(new ChatComponentText("setToFalse"));
 			} else {
-				world.setBlockState(pos, state.withProperty(LIT_UP, true));
+				world.setBlockState(pos, state.withProperty(LIT_UP, true).withProperty(FACING, state.getValue(FACING)));
+				player.addChatMessage(new ChatComponentText("setToTrue"));
 			}
-			//setBlockBoundsBasedOnFacing(state);
 		}
 		
 		return true;
